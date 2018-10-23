@@ -1,0 +1,47 @@
+@(people: Seq[Person], form: Form[Person])(implicit messages: Messages)
+
+
+@main("People") {
+
+    @* Some HTML code to list out the CD's that we passed in a table with two columns *@
+    <h1>People</h1>
+    <table>
+        <thead>
+            <tr><th>Name</th><th>Age</th><th>Job Title</th></tr>
+        </thead>
+        <tbody>
+        @for(person <- people) {
+            <tr><td>@person.name</td><td>@person.age</td><td>@person.jobTitle</td></tr>
+        }
+        </tbody>
+    </table>
+
+    <hr/>
+
+
+    @helper.form(routes.Application.createPerson()) {
+
+        @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
+        @helper.inputText(form("age"), '_label -> "Age" , '_showConstraints -> false)
+        @helper.inputText(form("job title"), '_label -> "Job Title" , '_showConstraints -> false)
+        <button type="submit">Add Person</button>
+    }
+
+    @* This helper will generate the HTML for this form and it will look like this
+    <form action="/cds" method="POST">
+    <dl class=" " id="name_field">
+    <dt><label for="name">Name</label></dt>
+    <dd>
+    <input type="text" id="name" name="name" value="">
+    </dd>
+    </dl>
+    <dl class=" " id="price_field">
+    <dt><label for="price">Price</label></dt>
+    <dd>
+    <input type="text" id="price" name="price" value="">
+    </dd>
+    </dl>
+    <button type="submit">Create CD</button>
+    </form> *@
+
+}

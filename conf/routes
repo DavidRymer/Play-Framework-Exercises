@@ -5,5 +5,17 @@
 # Home page
 GET     /                           controllers.Application.index
 
-# Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /static                     controllers.Application.staticHelloWorld()
+
+GET     /redirect                   controllers.Application.redirect
+
+GET     /dynamic/:name              controllers.Application.dynamicHelloWorld(name)
+
+GET     /people                     controllers.Application.listPeople()
+
+POST    /people                     controllers.Application.createPerson()
+
+
+
